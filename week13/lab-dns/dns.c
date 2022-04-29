@@ -10,11 +10,7 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    struct addrinfo *walk = addr;
-    while (walk) {
-        struct sockaddr_in* internet_addr = (struct sockaddr_in*) addr->ai_addr;
-        printf("%s is at: %s\n", argv[1], inet_ntoa(internet_addr->sin_addr));
-        walk = walk->ai_next;
-    }
-  return 0;
+    struct sockaddr_in* internet_addr = (struct sockaddr_in*) addr->ai_addr;
+    printf("%s is at: %s\n", argv[1], inet_ntoa(internet_addr->sin_addr));
+    return 0;
 }

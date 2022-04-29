@@ -49,6 +49,9 @@ int main(int argc, char *argv[])
         if (sfd == -1)
             continue;
 
+        int enable_broadcast = 1;
+        setsockopt(sfd, SOL_SOCKET, SO_BROADCAST, &enable_broadcast, sizeof(int));
+        
         if (bind(sfd, rp->ai_addr, rp->ai_addrlen) == 0)
             break;  // Success
 
